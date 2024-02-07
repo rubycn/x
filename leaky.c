@@ -40,7 +40,7 @@ printf("\n enter the message: ");
 scanf("%s",str);
 printf("\n enter the queue size: ");
 scanf("%d",&q_size);
-for(i=0;str[i]!='\0';)// divide the data into frames and give frame a seq number.
+for(i=0;str[i]!='\0';)
 {
 fr[f_no].seq=f_no;
 for(j=i,k=0;str[j]!='\0' && k<5;j++,k++)
@@ -49,18 +49,18 @@ fr[f_no].msg[k]='\0';
 f_no++;
 i=j;
 }
-printf("\n show the packets: \n");// display the data that is converted into packets/fram
+printf("\n show the packets: \n");
 for(i=0;i<f_no;i++)
 printf("frame %d is : %s\n",i,fr[i].msg);
 sleep(5);
 arrival[0]=1;
-for(i=1;i<f_no;i++)// insert the frames into the queue as they arrive and marks their arrival time.
+for(i=1;i<f_no;i++)
 {
 n=rand()%6;
 arrival[i]=arrival[i-1]+n;
 }
 printf("\n arrival time of the packets\n");
-for(i=0;i<f_no;i++)// print the arrival time of the packets
+for(i=0;i<f_no;i++)
 printf("frame %d : %d \n",i,arrival[i]);
 printf("size of the bucket is %d\n",q_size);
 sleep(5);
@@ -68,7 +68,7 @@ i=0;
 while(i<f_no||clk<=5*f_no)
 {
 printf("\nclk:: %d",clk);
-while(clk==arrival[i])// when the packet arrives at some time 
+while(clk==arrival[i])
 {
 insert(i);
 i++;
