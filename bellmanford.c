@@ -2,26 +2,23 @@
 void bellmanFord(int src,int graph[10][10],int n) 
 {
  int dist[20],sum=0,i; 
- // Initialize distances
- for (int i = 0; i < n; i++)
- dist[i] = 999;
- dist[src] = 0; 
- // Relax all edges V-1 times
- for (int i = 0; i < n - 1; i++) 
+ for(int i=0;i<n;i++)
+ dist[i]=999;
+ dist[src]=0; 
+ for(int i=0;i<n-1;i++) 
  {
- for (int u = 0; u < n; u++)
+ for(int u=0;u<n;u++)
  {
- for (int v = 0; v < n; v++) 
+ for(int v=0;v<n;v++) 
  {
- if (graph[u][v] && dist[u] != 999 && dist[u] + graph[u][v] < dist[v])
+ if(graph[u][v] && dist[u] != 999 && dist[u] + graph[u][v] < dist[v])
  dist[v] = dist[u] + graph[u][v];
  }
  }
  }
- // Check for negative weight cycles
- for (int u = 0; u < n; u++) 
+ for (int u=0;u<n;u++) 
  {
- for (int v = 0; v < n; v++) 
+ for (int v=0;v<n;v++) 
  {
  if (graph[u][v] && dist[u] != 999 && dist[u] + graph[u][v] < dist[v]) 
  {
@@ -49,7 +46,6 @@ void main()
  {
  scanf("%d",&graph[i][j]);
  }
- 
  }
  printf("Enter the source vertex: ");
  scanf("%d", &src);
